@@ -18,8 +18,8 @@ of the resume from a single source of truth.
 
 ## Build
 
-`make` compiles the resume (installing any missing TeX Live packages on Arch
-first) and produces `resume/Koushik_Sahu_Resume.pdf`:
+`make build` installs any missing TeX Live packages (Arch Linux only) and
+compiles the resume, producing `resume/Koushik_Sahu_Resume.pdf`:
 
 ```
 make build
@@ -28,6 +28,18 @@ make build
 `make run` additionally opens the generated PDF with the default viewer.
 
 `make clean` removes build artifacts (`aux`, `log`, `out` files).
+
+## Releases
+
+Every git tag triggers a GitHub Actions workflow (`.github/workflows/release.yml`)
+that builds the PDF on a clean runner and publishes it to
+[GitHub Releases](../../releases):
+
+```
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+The release asset is named `Koushik_Sahu_Resume_<tag>.pdf`.
 
 ## Structure
 

@@ -35,10 +35,16 @@ ifneq ($(PLATFORM),Windows)
 DEPS := $(shell find components -name '*.tex' -o -name '*.sty' -o -name '*.jpg')
 endif
 
-.PHONY: build run clean
+.PHONY: compile build run clean
 .NOTPARALLEL:
 
-# setup = build: install TeX Live dependencies (distro-specific), then compile
+# Compile the PDF directly (no dependency install). Run twice so hyperref
+# outline/bookmark references settle (rerunfilecheck).
+compile:
+	@$(MAKE) --no-print-directory $(MAIN_PDF)
+	@$(MAKE) --no-print-directory -B $(MAIN_PDF)
+
+# Full build: install TeX Live dependencies (distro-specific), then compile
 build:
 ifeq ($(PLATFORM),Windows)
 	$(error Windows is not supported yet. Build on Arch Linux, or inside WSL.)
@@ -50,10 +56,8 @@ ifeq ($(DISTRO),arch)
 	if [ -n "$$missing" ]; then \
 		echo "Installing missing packages:$$missing"; \
 		sudo pacman -S --needed $$missing; \
-	else \
-		echo "All TeX Live packages already installed."; \
 	fi
-	@$(MAKE) --no-print-directory $(MAIN_PDF)
+	@$(MAKE) --no-print-directory compile
 else
 	$(error Unsupported Linux distribution "$(DISTRO)". Add a case for it in the 'build' target.)
 endif
@@ -66,12 +70,8 @@ run:
 ifeq ($(PLATFORM),Windows)
 	$(error Windows is not supported yet. Build on Arch Linux, or inside WSL.)
 else ifeq ($(PLATFORM),Linux)
-ifeq ($(DISTRO),arch)
-	@$(MAKE) --no-print-directory $(MAIN_PDF)
+	@$(MAKE) --no-print-directory compile
 	@xdg-open $(realpath $(MAIN_PDF)) &
-else
-	$(error Unsupported Linux distribution "$(DISTRO)". Add a case for it in the 'run' target.)
-endif
 else
 	$(error Unsupported platform "$(PLATFORM)". Add a case for it in the 'run' target.)
 endif
