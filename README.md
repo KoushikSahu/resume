@@ -8,18 +8,13 @@ of the resume from a single source of truth.
 
 ## Requirements
 
-- A LaTeX distribution with LuaLaTeX. On Arch Linux:
-
-  ```
-  sudo pacman -S texlive-basic texlive-bin texlive-latex texlive-latexrecommended texlive-fontsrecommended texlive-fontsextra texlive-luatex
-  ```
-
-  The `emoji` package also needs the `TwemojiMozilla` font (`ttf-mozilla-twemoji` on some distros).
+- A LaTeX distribution with LuaLaTeX, plus the TeX packages and fonts used by
+  the project. If anything is missing, `make build` fails with an error
+  identifying it — install it using your platform's package manager.
 
 ## Build
 
-`make build` installs any missing TeX Live packages (Arch Linux only) and
-compiles the resume, producing `resume/Koushik_Sahu_Resume.pdf`:
+`make build` compiles the resume, producing `resume/Koushik_Sahu_Resume.pdf`:
 
 ```
 make build
@@ -44,8 +39,9 @@ The release asset is named `Koushik_Sahu_Resume_<tag>.pdf`.
 ## Structure
 
 - `resume/` — main `.tex` files; each compiles to a full resume.
-- `components/` — reusable sections: `background`, `skills`, `links`, and
-  subfolders for education, experience, projects, publications, and awards.
+- `components/` — reusable sections: `background`, `Skills/programmingskills`,
+  `Links/competitiveprogramminglinks`, and subfolders for education, experience,
+  projects, publications, and awards.
 
 To add a new version of the resume, create a main file in `resume/` that
 imports the components you want and run `make` on it.
