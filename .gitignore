@@ -1,0 +1,16 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.xdv
+
+# Generated PDFs
+resume/*.pdf
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
