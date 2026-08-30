@@ -6,6 +6,7 @@
 *.fls
 *.fdb_latexmk
 *.xdv
+resume/luatex.vtEmtp/
 
 # Generated PDFs
 resume/*.pdf

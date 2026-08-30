@@ -6,8 +6,10 @@
 \usepackage{fontawesome}
 \usepackage{fontspec}
 \usepackage{import}
-\usepackage{emoji}
+\usepackage{twemojis}%
 \usepackage{graphicx}
+\graphicspath{{../components/logos/}}
+\newcommand{\bwemoji}[2][height=\twemojiDefaultHeight]{\includegraphics[page=#2,#1]{all-twemojis-gray}}
 
 \pagestyle{empty}
 \geometry{margin=0.5in}
@@ -16,11 +18,10 @@
 \renewcommand\labelitemi{--}
 
 \definecolor{highlight}{RGB}{0,0,0}
-
-\newcommand{\github}{\textcolor{rgb:red,110;green,84;blue,148}{\faGithubSquare}}
-\newcommand{\linkedin}{\textcolor{rgb:red,6;green,108;blue,170}{\faLinkedinSquare}}
-\newcommand{\name}[1]{\begin{center}\section*{\LARGE \color{highlight} #1}\vspace{-0.8cm}\end{center}}
-\newcommand{\topinfo}[1]{\begin{center}\vspace{-0.1cm}#1\vspace{-0.3cm}\end{center}}
-\newcommand{\resumesection}[1]{\vspace{-0.5cm}\section*{\color{highlight}#1}\vspace{-0.2cm}\hrule\vspace{0.2cm}}
+\newcommand{\github}{\faGithubSquare}
+\newcommand{\linkedin}{\faLinkedinSquare}
+\newcommand{\name}[1]{\begin{center}\section*{\LARGE \color{highlight} #1}\vspace{-0.85cm}\end{center}}
+\newcommand{\topinfo}[1]{\begin{center}#1\vspace{-0.42cm}\end{center}}
+\newcommand{\resumesection}[1]{\vspace{-0.7cm}\section*{\color{highlight}#1}\vspace{-0.2cm}\hrule\vspace{0.15cm}}
 
 \renewcommand{\familydefault}{\sfdefault}
