@@ -1,15 +1,19 @@
 # TeX Live packages required to build the resume (installed by
-# TeX-Live/setup-texlive-action via .github/workflows/release.yml).
-# scheme-basic provides latex, lualatex, and core LaTeX tooling.
+# TeX-Live/setup-texlive-action via .github/workflows/*.yml).
+# scheme-basic provides latex, lualatex, and core LaTeX tooling
+# (latex, graphics, tools, hyperref, geometry, luaotfload, lm).
 scheme-basic
-# LaTeX extras used by the template
+# Loaded by components/commonheader.sty and their transitive deps not
+# covered by scheme-basic (verified against texlive.tlpdb):
 enumitem
 import
 titlesec
-# Fonts and icons
-fontawesome5
-fontspec
 xcolor
+# Fonts and icons
+fontawesome5        # pulls luatexbase + ctablestack on LuaLaTeX
+fontspec            # pulls euenc, xunicode, tipa
+pgf                 # twemojis requires tikz; pgf pulls xcolor + fp
+twemojis
 # Emoji support (requires the TwemojiMozilla font at build time,
 # fetched separately in the workflow)
 emoji
