@@ -7,7 +7,7 @@ enumitem
 import
 titlesec
 # Fonts and icons
-fontawesome
+fontawesome5
 fontspec
 xcolor
 # Emoji support (requires the TwemojiMozilla font at build time,
