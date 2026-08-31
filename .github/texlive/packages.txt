@@ -10,8 +10,10 @@ import
 titlesec
 xcolor
 # Fonts and icons
-fontawesome5        # pulls luatexbase + ctablestack on LuaLaTeX
-fontspec            # pulls euenc, xunicode, tipa
+fontawesome5
+luatexbase          # required by fontawesome5's utex-helper on LuaLaTeX;
+ctablestack         # NOT auto-pulled (fontawesome5 declares no tlpdb deps)
+fontspec            # tlmgr auto-pulls euenc, xunicode, tipa
 pgf                 # twemojis requires tikz; pgf pulls xcolor + fp
 twemojis
 # Emoji support (requires the TwemojiMozilla font at build time,
